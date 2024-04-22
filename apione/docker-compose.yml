@@ -1,0 +1,21 @@
+version: '3.4'
+
+services:
+
+  apione:
+    image: ${DOCKER_REGISTRY-}apione:${TAG:-latest}
+    build:
+      context: .
+      dockerfile: apione/Dockerfile
+    ports:
+      - "60001:50001"
+  
+  apione-dapr:
+    image: "daprio/daprd:1.13.2"
+    command: ["./daprd",
+      "-app-id", "apione",
+      "-app-port", "80"
+      ]
+    depends_on:
+      - apione
+    network_mode: "service:apione"

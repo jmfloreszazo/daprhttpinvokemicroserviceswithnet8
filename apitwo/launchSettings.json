@@ -1,0 +1,15 @@
+{
+  "profiles": {
+    "Docker Compose": {
+      "commandName": "DockerCompose",
+      "composeLaunchAction": "LaunchBrowser",
+      "composeLaunchServiceName": "apitwo",
+      "composeLaunchUrl": "{Scheme}://localhost:{ServicePort}/test",
+      "commandVersion": "1.0",
+      "serviceActions": {
+        "apitwo": "StartDebugging",
+        "apitwo-dapr": "StartWithoutDebugging"
+      }
+    }
+  }
+}

@@ -1,0 +1,37 @@
+version: '3.4'
+
+services:
+
+  apitwo:
+    image: ${DOCKER_REGISTRY-}apitwo:${TAG:-latest}
+    build:
+      context: .
+      dockerfile: apitwo/Dockerfile
+    ports:
+      - "60001:50001"
+  
+  apitwo-dapr:
+    image: "daprio/daprd:1.13.2"
+    command: ["./daprd",
+      "-app-id", "apitwo",
+      "-app-port", "80"
+      ]
+    depends_on:
+      - apitwo
+    network_mode: "service:apitwo"
+
+  apione:
+    image: ${DOCKER_REGISTRY-}apione:${TAG:-latest}
+    init: true
+    ports:
+      - "60000:50001"
+  
+  apione-dapr:
+    image: "daprio/daprd:1.13.2"
+    command: ["./daprd",
+      "-app-id", "apione",
+      "-app-port", "80"
+      ]
+    depends_on:
+      - apione
+    network_mode: "service:apione"
