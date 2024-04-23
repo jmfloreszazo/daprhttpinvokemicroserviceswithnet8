@@ -1,4 +1,4 @@
-# .NET 6 DAPR Microservices with HTTP Invoke
+# .NET 8 DAPR Microservices with HTTP Invoke
 
 This project use:
 
@@ -53,7 +53,7 @@ app.Run();
 
 ## HTTPS
 
-This [exampe use HTTPS](https://docs.microsoft.com/en-us/aspnet/core/security/docker-compose-https?view=aspnetcore-6.0) for **apione**
+This [exampe use HTTPS](https://docs.microsoft.com/en-us/aspnet/core/security/docker-compose-https?view=aspnetcore-8.0) for **apione**
 
 ```bash
 version: '3.4'
